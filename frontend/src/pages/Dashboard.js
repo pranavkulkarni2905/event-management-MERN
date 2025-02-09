@@ -22,7 +22,7 @@ const Dashboard = () => {
 
     const fetchEvents = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/events");
+            const response = await axios.get("https://event-management-mern.onrender.com/api/events");
             setEvents(response.data);
         } catch (error) {
             toast.error("Failed to fetch events");
@@ -67,7 +67,7 @@ const Dashboard = () => {
     const handleCreateEvent = async () => {
         const token = localStorage.getItem("token");
         try {
-            await axios.post("http://localhost:5000/api/events", eventData, {
+            await axios.post("https://event-management-mern.onrender.com/api/events", eventData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             toast.success("Event created!");
@@ -81,7 +81,7 @@ const Dashboard = () => {
     const handleUpdateEvent = async () => {
         const token = localStorage.getItem("token");
         try {
-            await axios.put(`http://localhost:5000/api/events/${editEvent._id}`, eventData, {
+            await axios.put(`https://event-management-mern.onrender.com/api/events/${editEvent._id}`, eventData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             toast.success("Event updated!");
@@ -95,7 +95,7 @@ const Dashboard = () => {
     const handleDeleteEvent = async (eventId) => {
         const token = localStorage.getItem("token");
         try {
-            await axios.delete(`http://localhost:5000/api/events/${eventId}`, {
+            await axios.delete(`https://event-management-mern.onrender.com/api/events/${eventId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             toast.success("Event deleted!");
@@ -108,7 +108,7 @@ const Dashboard = () => {
     const handleAttendEvent = async (eventId) => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.post(`http://localhost:5000/api/events/${eventId}/attend`, {}, {
+            const response = await axios.post(`https://event-management-mern.onrender.com/api/events/${eventId}/attend`, {}, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             toast.success("you joined Event!");
